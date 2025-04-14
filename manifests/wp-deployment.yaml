@@ -69,6 +69,12 @@ spec:
         ports:
         - containerPort: 80
           name: wordpress
+        readinessProbe:
+          httpGet:
+            path: /wp-admin/install.php
+            port: 80
+          initialDelaySeconds: 20
+          periodSeconds: 5
         volumeMounts:
         - mountPath: /var/www/html
           name: wordpress-storage
